@@ -16,9 +16,11 @@ class CreateVehicleStagesTable extends Migration
         Schema::create('vehicle_stages', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('order_id')->constrained();
-            $table->foreignId('stage_id')->constrained();
-            $table->foreignId('depot_id')->comment('destination')->nullable()->constrained();
+            $table->foreignId('vehicle_id')->nullable()->constrained();  //  plate of car
+            $table->foreignId('stage_id')->constrained();   // On Transit
+            $table->foreignId('order_id')->constrained();  // 003
+            $table->foreignId('depot_id')->comment('destination')
+                ->nullable()->constrained();  // nairobi
 
             $table->timestamps();
         });

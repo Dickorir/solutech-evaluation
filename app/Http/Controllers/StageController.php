@@ -6,7 +6,7 @@ use App\Http\Resources\StageCollection;
 use App\Models\Stage;
 use Illuminate\Http\Request;
 
-class StageController extends Controller
+class StageController extends BaseController
 {
     public function index()
     {

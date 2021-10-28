@@ -17,8 +17,8 @@ class VehicleCollection extends JsonResource
         return [
             'id' => $this->id,
             'number_plate' => $this->number_plate,
-            'stage' => $this->stage_id,
-            'depot' => $this->depot_id
+            'stage' => $this->stage->name,
+            'depot' => $this->depot->name
         ];
     }
 }

@@ -17,8 +17,8 @@ class CreateVehiclesTable extends Migration
             $table->id();
 
             $table->string('number_plate');
-            $table->foreignId('depot_id')->constrained();
-            $table->foreignId('stage_id')->constrained();
+            $table->foreignId('depot_id')->constrained();  // which port currently  mombasa
+            $table->foreignId('stage_id')->constrained();  // current stage     on transit
 
             $table->timestamps();
         });

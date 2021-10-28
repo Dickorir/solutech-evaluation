@@ -13,11 +13,12 @@ class CreateOrderDeliveriesTable extends Migration
      */
     public function up()
     {
+        // for history of order deliveries
         Schema::create('order_deliveries', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('order_id')->constrained();
-            $table->foreignId('delivery_id')->constrained();
+            $table->foreignId('order_id')->constrained();   // 001
+            $table->foreignId('delivery_id')->constrained();   // pending
 
             $table->timestamps();
         });

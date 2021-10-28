@@ -6,7 +6,7 @@ use App\Http\Resources\OrderDeliveryCollection;
 use App\Models\OrderDelivery;
 use Illuminate\Http\Request;
 
-class OrderDeliveryController extends Controller
+class OrderDeliveryController extends BaseController
 {
     public function index()
     {

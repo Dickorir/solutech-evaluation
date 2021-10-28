@@ -6,7 +6,7 @@ use App\Http\Resources\DepotCollection;
 use App\Models\Depot;
 use Illuminate\Http\Request;
 
-class DepotController extends Controller
+class DepotController extends BaseController
 {
     public function index()
     {

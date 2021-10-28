@@ -17,9 +17,8 @@ class CreateOrdersTable extends Migration
             $table->id();
 
             $table->string('order_no');
-            $table->foreignId('depot_id')->constrained();
-            $table->foreignId('delivery_id')->nullable()->constrained();
-            $table->foreignId('vehicle_id')->nullable()->constrained();
+            $table->foreignId('depot_id')->constrained();   // which port currently
+            $table->foreignId('delivery_id')->nullable()->constrained(); // what delivery status
 
             $table->timestamps();
         });

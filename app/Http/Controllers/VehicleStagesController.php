@@ -7,7 +7,7 @@ use App\Http\Resources\VehicleStagesCollection;
 use App\Models\VehicleStage;
 use Illuminate\Http\Request;
 
-class VehicleStagesController extends Controller
+class VehicleStagesController extends BaseController
 {
     public function index()
     {
