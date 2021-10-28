@@ -2,21 +2,23 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Http\Resources\Json\JsonResource;
 
-class VehicleCollection extends ResourceCollection
+class VehicleCollection extends JsonResource
 {
     /**
      * Transform the resource collection into an array.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
+     * @return array
      */
     public function toArray($request)
     {
         return [
             'id' => $this->id,
-            'name' => $this->name
+            'number_plate' => $this->number_plate,
+            'stage' => $this->stage_id,
+            'depot' => $this->depot_id
         ];
     }
 }

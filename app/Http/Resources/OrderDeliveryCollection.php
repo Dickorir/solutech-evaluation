@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class VehicleStagesCollection extends JsonResource
+class OrderDeliveryCollection extends JsonResource
 {
     /**
      * Transform the resource collection into an array.
@@ -17,8 +17,10 @@ class VehicleStagesCollection extends JsonResource
         return [
             'id' => $this->id,
             'order' => $this->order_id,
-            'stage' => $this->stage_id,
-            'depot' => $this->depot_id
+            'delivery' => $this->delivery_id,
+            'created' => $this->created_at,
+            'updated' => $this->updated_at
         ];
     }
 }
+//order_id	delivery_id	created_at	updated_at

@@ -11,7 +11,7 @@ class VehicleController extends BaseController
     public function index()
     {
         // return all vehicles
-        $data = Vehicle::get();
+        $data = Vehicle::with('depot','stage')->get();
 
         return $this->sendResponse(VehicleCollection::collection($data), 'All Vehicles.');
     }
