@@ -19,9 +19,8 @@ class FleetController extends BaseController
      */
     public function index()
     {
-        $data = VehicleStage::with('order')->distinct()->latest()->get();
+        $data = Order::has('vehicle_stage')->latest()->get();
 
-//        dd($data->order->delivery->name);
         return $this->sendResponse(VehicleStagesCollection::collection($data), 'Orders Deliveries');
     }
 
@@ -45,7 +44,6 @@ class FleetController extends BaseController
         if ($order[0] == 1){
             return $this->sendError(1, $order[1]);
         }
-
 
         // insert vehicle_stages with vehicle_id, stage_id, order_id,  depot_id,
         DB::beginTransaction();
@@ -74,11 +72,11 @@ class FleetController extends BaseController
         catch (\Exception $e) {
             DB::rollback();
 //            throw $e;
-            return $this->sendError(1, $e);
+            return $this->sendError(1, $e->getMessage());
         } catch (\Throwable $e) {
             DB::rollback();
 //            throw $e;
-            return $this->sendError(1, $e);
+            return $this->sendError(1, $e->getMessage());
         }
     }
 

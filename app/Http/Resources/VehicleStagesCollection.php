@@ -15,12 +15,12 @@ class VehicleStagesCollection extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
-            'order' => $this->order->order_no,
-            'vehicle' => $this->vehicle->number_plate,
-            'destination_depot' => $this->depot->name,
-            'vehicle_status' => $this->stage->name,
-            'order_status' => $this->order->delivery->name,
+            'id' => $this->vehicle_stage->id,
+            'order' => $this->order_no,
+            'vehicle' => $this->vehicle_stage->vehicle->number_plate,
+            'destination_depot' => $this->vehicle_stage->depot->name,
+            'vehicle_status' => $this->vehicle_stage->stage->name,
+            'order_status' => $this->delivery->name,
         ];
     }
 }
