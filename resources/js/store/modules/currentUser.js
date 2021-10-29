@@ -1,7 +1,4 @@
 import axios from 'axios';
-import config from '../../config';
-import {http, httpFile} from "../../services/http_service";
-import qs from 'qs';
 
 const state = {
     user: {}

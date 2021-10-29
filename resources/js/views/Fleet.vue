@@ -7,22 +7,26 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
                                 <a href="#">Home</a>
-                            </li>
-                            <li class="breadcrumb-item active" aria-current="page">orders</li>
+                            </li> <chevron-right-icon size="1.5x" class="custom-class"></chevron-right-icon>
+                            <li class="breadcrumb-item active" aria-current="page">fleets</li>
                         </ol>
                     </nav>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="text-center">
-                    <p class="font-weight-bold">orders</p>
+                    <p class="font-weight-bold">fleets</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="float-right">
+                    <b-button id="show-btn" @click="showModal">Add Fleet <i class="fas fa-plus fa-fw"></i></b-button>
                 </div>
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-12">
-
                 <div class="row">
                     <div class="col-md-12">
 
@@ -33,25 +37,27 @@
                                     <thead>
                                     <tr class="text-dark">
                                         <th>#</th>
-                                        <th>Year</th>
-                                        <th>Status</th>
-                                        <th>Start Date</th>
-                                        <th>End Date</th>
+                                        <th>Order</th>
+                                        <th>Vehicle</th>
+                                        <th>Destination</th>
+                                        <th>Vehicle Status</th>
+                                        <th>Order Status</th>
+                                        <th>More</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr v-for="product in getAllOrders" :key="product.id">
-                                        <td class="text-center">3</td>
-                                        <td>{{ product.id }}</td>
-                                        <td class="text-capitalize">{{ product.year }}</td>
-                                        <td class="text-capitalize">{{ product.status }}</td>
-                                        <td class="text-capitalize">{{ product.start_date }}</td>
-                                        <td class="text-capitalize">{{ product.end_date }}</td>
+                                    <tr v-for="fleet in getAllFleets" :key="fleet.id">
+                                        <td>{{ fleet.id }}</td>
+                                        <td class="text-capitalize">{{ fleet.order }}</td>
+                                        <td class="text-capitalize">{{ fleet.vehicle }}</td>
+                                        <td class="text-capitalize">{{ fleet.destination_depot }}</td>
+                                        <td class="text-capitalize">{{ fleet.vehicle_status }}</td>
+                                        <td class="text-capitalize">{{ fleet.order_status }}</td>
                                         <td>
                                             <a href="" class="text-secondary btn btn-sm btn-info" id="" data-toggle="tooltip" title="Manage member">
                                                 <span style="color: white"><i class="fa fa-tasks"></i>&nbsp;&nbsp;Assign</span>
                                             </a>
-                                            <button class="btn btn-success" data-toggle="modal" data-target="#addNew" @click="openModalWindow">Add New <i class="fas fa-user-plus fa-fw"></i></button>
+                                            <button class="btn btn-success">Add New <i class="fas fa-user-plus fa-fw"></i></button>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -61,32 +67,63 @@
                             </div>
                         </div>
 
+                        <b-modal ref="my-modal" hide-footer title="Add New Flee">
+                            <div class="d-block">
 
-                        <div class="modal fade" id="addNew" tabindex="-1" role="dialog" aria-labelledby="addNewLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-
-                                        <h5 class="modal-title" id="addNewLabel">Add New User</h5>
-
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">×</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body view-body">
-                                        <div class="row" id="info">
-                                            <div class="col-md-12">
-                                                <div class="card">
-                                                    <div class="card-body">
-                                                        Nomare
-                                                    </div>
-                                                </div>
-                                            </div>
+                                <form v-on:submit.prevent="saveFleet">
+                                    <div class="form-row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="">Order</label>
+                                            <select class="form-control" v-model="form.order_id" >
+                                                <option value="admin">Admin</option>
+                                                <option v-for="item in getOrders" :value="item.id" :key="item.id">
+                                                    {{ item.order }}
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="">Order Status</label>
+                                            <select class="form-control" v-model="form.delivery_id" >
+                                                <option v-for="item in getDeliveries" :value="item.id" :key="item.id">
+                                                    {{ item.name }}
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="">Vehicle</label>
+                                            <select class="form-control" v-model="form.vehicle_id" >
+                                                <option v-for="item in getVehicles" :value="item.id" :key="item.id">
+                                                    {{ item.number_plate }}
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="">Vehicle Status</label>
+                                            <select class="form-control" v-model="form.stage_id" >
+                                                <option v-for="item in getStages" :value="item.id" :key="item.id">
+                                                    {{ item.name }}
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="">Destination Depot</label>
+                                            <select class="form-control" v-model="form.depot_id" >
+                                                <option v-for="item in getDepots" :value="item.id" :key="item.id">
+                                                    {{ item.name }}
+                                                </option>
+                                            </select>
                                         </div>
                                     </div>
-                                </div>
+                                    <button type="submit" id="submit" name="submit"
+                                            class="btn btn-primary btn-block"><span id="create">Submit</span>
+                                    </button>
+
+                                </form>
+
                             </div>
-                        </div>
+                            <b-button class="mt-3" variant="outline-danger" block @click="hideModal">Close Me</b-button>
+                        </b-modal>
+
 
 
                     </div>
@@ -98,34 +135,89 @@
 </template>
 <script>
 import axios from "axios";
+import {ChevronRightIcon} from 'vue-feather-icons'
+
 export default {
-    data() {
-        return {
-            editMode: false,
-            products: []
+    data: () => ({
+        editMode: false,
+        fleets: {},
+        status: false,
+        form: {
+            order_id : '',
+            delivery_id : '',
+            vehicle_id : '',
+            stage_id : '',
         }
+    }),
+    components: {
+        ChevronRightIcon,
     },
     computed: {
-      getAllOrders: {
-          get() {
-              return this.$store.state.theOrders.orders;
-          }
-      }
+        getAllFleets: {
+            get() {
+                return this.$store.state.theFleets.fleets;
+            }
+        },
+        getVehicles: {
+            get() {
+                return this.$store.state.theVehicles.vehicles;
+            }
+        },
+        getDepots: {
+            get() {
+                return this.$store.state.theDepots.depots;
+            }
+        },
+        getDeliveries: {
+            get() {
+                return this.$store.state.theDeliveries.deliveries;
+            }
+        },
+        getStages: {
+            get() {
+                return this.$store.state.theStages.stages;
+            }
+        },
+        getOrders: {
+            get() {
+                return this.$store.state.theOrders.orders;
+            }
+        },
     },
     created() {
-        this.$store.dispatch('theOrders/getOrders')
-
-        // axios
-        //     .get('http://bursary_v2.io/api/v1/periods')
-        //     .then(response => {
-        //         this.products = response.data.data;
-        //     });
+        this.$store.dispatch('theFleets/getFleets');
+        this.$store.dispatch('theVehicles/getVehicles');
+        this.$store.dispatch('theDepots/getDepots');
+        this.$store.dispatch('theDeliveries/getDeliveries');
+        this.$store.dispatch('theStages/getStages');
+        this.$store.dispatch('theOrders/getOrders');
     },
     methods: {
-        openModalWindow(){
-            this.editMode = false
-            this.form.reset();
-            $('#addNew').modal('show');
+        showModal() {
+            this.$refs['my-modal'].show();
+            /*toastr.success('Noma sana Mabuda')
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+            })*/
+        },
+        hideModal() {
+            this.$refs['my-modal'].hide()
+        },
+        saveFleet(){
+            axios.post('/api/fleet', this.form)
+                .then(response => {
+                    // console.log(response.data.success)
+                    if (response.data.success === true) {
+                        this.$refs['my-modal'].hide();
+                        toastr.success('Fleet Saved Successful', 'Success')
+                    }
+                })
+                .catch(error => {
+                    // console.log(error.response.data.success)
+                    toastr.error(error.response.data.data, 'Error')
+                });
         },
     }
 }

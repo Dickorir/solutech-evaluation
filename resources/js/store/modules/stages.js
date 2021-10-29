@@ -1,22 +1,22 @@
 import axios from 'axios';
 
 const state = {
-    orders: []
+    stages: []
 }
 
 const getters = {};
 const actions = {
-    getOrders( {commit} ){
+    getStages( {commit} ){
         axios
-            .get('/api/orders')
+            .get('/api/stage')
             .then(response => {
-                commit('setOrders', response.data.data );
+                commit('setStages', response.data.data );
             });
     }
 };
 const mutations = {
-    setOrders( state, data ){
-        state.orders = data;
+    setStages( state, data ){
+        state.stages = data;
     }
 };
 
