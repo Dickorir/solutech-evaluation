@@ -109,14 +109,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       editMode: false,
-      products: []
+      orders: []
     };
   },
   computed: {
@@ -127,11 +125,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   created: function created() {
-    this.$store.dispatch('theOrders/getOrders'); // axios
-    //     .get('http://bursary_v2.io/api/v1/periods')
-    //     .then(response => {
-    //         this.products = response.data.data;
-    //     });
+    this.$store.dispatch('theOrders/getOrders');
   },
   methods: {
     openModalWindow: function openModalWindow() {
@@ -251,28 +245,24 @@ var render = function () {
                       _vm._v(" "),
                       _c(
                         "tbody",
-                        _vm._l(_vm.getAllOrders, function (product) {
-                          return _c("tr", { key: product.id }, [
-                            _c("td", { staticClass: "text-center" }, [
-                              _vm._v("3"),
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(product.id))]),
+                        _vm._l(_vm.getAllOrders, function (order) {
+                          return _c("tr", { key: order.id }, [
+                            _c("td", [_vm._v(_vm._s(order.id))]),
                             _vm._v(" "),
                             _c("td", { staticClass: "text-capitalize" }, [
-                              _vm._v(_vm._s(product.year)),
+                              _vm._v(_vm._s(order.order)),
                             ]),
                             _vm._v(" "),
                             _c("td", { staticClass: "text-capitalize" }, [
-                              _vm._v(_vm._s(product.status)),
+                              _vm._v(_vm._s(order.depot)),
                             ]),
                             _vm._v(" "),
                             _c("td", { staticClass: "text-capitalize" }, [
-                              _vm._v(_vm._s(product.start_date)),
+                              _vm._v(_vm._s(order.vehicle)),
                             ]),
                             _vm._v(" "),
                             _c("td", { staticClass: "text-capitalize" }, [
-                              _vm._v(_vm._s(product.end_date)),
+                              _vm._v(_vm._s(order.order_status)),
                             ]),
                             _vm._v(" "),
                             _c("td", [
@@ -357,13 +347,15 @@ var staticRenderFns = [
       _c("tr", { staticClass: "text-dark" }, [
         _c("th", [_vm._v("#")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Year")]),
+        _c("th", [_vm._v("Order")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Status")]),
+        _c("th", [_vm._v("Depot")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Start Date")]),
+        _c("th", [_vm._v("Vehicle")]),
         _vm._v(" "),
-        _c("th", [_vm._v("End Date")]),
+        _c("th", [_vm._v("Delivery")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("More")]),
       ]),
     ])
   },

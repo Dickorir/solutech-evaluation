@@ -3,11 +3,11 @@
         <div class="navigation-menu-body" id="navigation">
             <ul>
                 <li>
-                    <router-link to="/home" class="load">
+                    <router-link to="/fleet" class="load">
                             <span class="nav-link-icon">
                                 <pie-chart-icon size="1.5x" className="custom-class"></pie-chart-icon>
                             </span>
-                        <span>Dashboard</span>
+                        <span>Fleet</span>
                     </router-link>
                 </li>
                 <li>

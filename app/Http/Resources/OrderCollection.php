@@ -15,11 +15,13 @@ class OrderCollection extends JsonResource
     public function toArray($request)
     {
         return [
+
             'id' => $this->id,
-            'order' => $this->order_no,
-            'depot' => $this->depot_id,
-            'vehicle' => $this->vehicle_id,
-            'delivery' => $this->delivery_id
+            'order' => $this->order_no ?? '',
+            'depot' => $this->depot->name ?? '',
+//            'depot' => $this->vehicle_stage->depot->name ?? '',
+            'vehicle' => $this->vehicle_stage->vehicle->number_plate ?? '',
+            'order_status' => $this->delivery->name ?? '',
         ];
     }
 }

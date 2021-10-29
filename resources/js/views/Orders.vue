@@ -33,20 +33,20 @@
                                     <thead>
                                     <tr class="text-dark">
                                         <th>#</th>
-                                        <th>Year</th>
-                                        <th>Status</th>
-                                        <th>Start Date</th>
-                                        <th>End Date</th>
+                                        <th>Order</th>
+                                        <th>Depot</th>
+                                        <th>Vehicle</th>
+                                        <th>Delivery</th>
+                                        <th>More</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr v-for="product in getAllOrders" :key="product.id">
-                                        <td class="text-center">3</td>
-                                        <td>{{ product.id }}</td>
-                                        <td class="text-capitalize">{{ product.year }}</td>
-                                        <td class="text-capitalize">{{ product.status }}</td>
-                                        <td class="text-capitalize">{{ product.start_date }}</td>
-                                        <td class="text-capitalize">{{ product.end_date }}</td>
+                                    <tr v-for="order in getAllOrders" :key="order.id">
+                                        <td>{{ order.id }}</td>
+                                        <td class="text-capitalize">{{ order.order }}</td>
+                                        <td class="text-capitalize">{{ order.depot }}</td>
+                                        <td class="text-capitalize">{{ order.vehicle }}</td>
+                                        <td class="text-capitalize">{{ order.order_status }}</td>
                                         <td>
                                             <a href="" class="text-secondary btn btn-sm btn-info" id="" data-toggle="tooltip" title="Manage member">
                                                 <span style="color: white"><i class="fa fa-tasks"></i>&nbsp;&nbsp;Assign</span>
@@ -87,8 +87,6 @@
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>
@@ -102,7 +100,7 @@ export default {
     data() {
         return {
             editMode: false,
-            products: []
+            orders: []
         }
     },
     computed: {
@@ -114,12 +112,6 @@ export default {
     },
     created() {
         this.$store.dispatch('theOrders/getOrders')
-
-        // axios
-        //     .get('http://bursary_v2.io/api/v1/periods')
-        //     .then(response => {
-        //         this.products = response.data.data;
-        //     });
     },
     methods: {
         openModalWindow(){

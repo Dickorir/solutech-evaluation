@@ -1,6 +1,6 @@
 <template>
     <footer class="content-footer">
-        <div>© 2020 PesaChama </div>
+        <div>© 2020 Solutech Evaluation </div>
         <div>
             <nav class="nav">
 <!--                <a href="https://themeforest.net/licenses/standard" class="nav-link">Licenses</a>-->

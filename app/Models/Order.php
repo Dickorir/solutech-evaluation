@@ -12,7 +12,7 @@ class Order extends Model
     protected $guarded = ['id'];
 
     public function depot() {
-        return $this->hasOne( Depot::class );
+        return $this->belongsTo( Depot::class );
     }
 
     public function vehicle() {

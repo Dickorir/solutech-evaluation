@@ -9,7 +9,7 @@ const getters = {};
 const actions = {
     getOrders( {commit} ){
         axios
-            .get('http://bursary_v2.io/api/v1/periods')
+            .get('/api/orders')
             .then(response => {
                 commit('setOrders', response.data.data );
             });
