@@ -9,6 +9,8 @@ class Order extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
     public function depot() {
         return $this->hasOne( Depot::class );
     }
@@ -18,7 +20,7 @@ class Order extends Model
     }
 
     public function delivery() {
-        return $this->hasOne( Delivery::class );
+        return $this->belongsTo( Delivery::class );
     }
 }
 

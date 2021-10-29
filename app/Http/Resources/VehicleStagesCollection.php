@@ -16,9 +16,11 @@ class VehicleStagesCollection extends JsonResource
     {
         return [
             'id' => $this->id,
-            'order' => $this->order_id,
-            'stage' => $this->stage_id,
-            'depot' => $this->depot_id
+            'order' => $this->order->order_no,
+            'vehicle' => $this->vehicle->number_plate,
+            'destination_depot' => $this->depot->name,
+            'vehicle_status' => $this->stage->name,
+            'order_status' => $this->order->delivery->name,
         ];
     }
 }

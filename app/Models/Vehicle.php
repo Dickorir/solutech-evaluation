@@ -9,6 +9,8 @@ class Vehicle extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['number_plate',	'depot_id', 'stage_id'];
+
     public function depot() {
         return $this->belongsTo( Depot::class );
     }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\DepotController;
+use App\Http\Controllers\FleetController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderDeliveryController;
 use App\Http\Controllers\StageController;
@@ -33,4 +34,7 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
     Route::get('stage', [StageController::class,'index']);
     Route::get('vehicle-stages', [VehicleStagesController::class,'index']);
     Route::get('order-deliveries', [OrderDeliveryController::class,'index']);
+
+    Route::get('fleet', [FleetController::class,'index']);
+    Route::post('fleet', [FleetController::class,'store']);
 });
