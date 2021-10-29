@@ -3,8 +3,7 @@
     <div class="form-wrapper">
         <!-- logo -->
         <div id="logo" style="margin-top:-30px;">
-            <img class="logo" :src="'../../assets/media/image/logo.png'" alt="logo" style="width:300px;margin-bottom:-30px;">
-
+            <h1 style="color: blue">Solutech Evaluation</h1>
         </div>
         <!-- ./ logo -->
 

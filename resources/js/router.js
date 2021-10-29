@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router'
-import Welcome from './views/Welcome.vue';
+import Fleet from './views/Fleet.vue';
 import AppLayout from './layouts/App.vue';
 import GuestLayout from './layouts/Guest.vue';
 
@@ -18,12 +18,12 @@ const routes = [
         ],
     },
     {
-        path: '/home',
+        path: '/fleet',
         component:AppLayout,
         children:[{
-            name: 'home',
+            name: 'fleet',
             path:'',
-            component:Welcome
+            component:Fleet
         },
         ],
     },
@@ -36,12 +36,6 @@ const routes = [
             component: () => import('./views/Orders.vue')
         },
         ],
-    },
-    {
-        path: '/categories',
-        name: 'categories',
-        component: () => import('./views/Categories.vue')
-        // component: () => Categories
     }
 ];
 

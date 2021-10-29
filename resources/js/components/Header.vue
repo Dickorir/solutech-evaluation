@@ -9,8 +9,8 @@
                 </div>
 
                 <div class="header-logo">
-                    <a href=#>
-                        <img class="logo" :src="'../../assets/media/image/logo.png'" alt="logo" style="width: 150px">
+                    <a href="#" style="color: blue">
+                        Solutech Evaluation
                     </a>
                 </div>
             </div>
