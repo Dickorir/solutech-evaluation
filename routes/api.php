@@ -38,4 +38,5 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
     Route::get('fleet', [FleetController::class,'index']);
     Route::post('fleet', [FleetController::class,'store']);
     Route::get('fleet/{id}', [FleetController::class,'show']);
+    Route::delete('fleet/{id}', [FleetController::class,'destroy']);
 });

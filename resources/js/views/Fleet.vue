@@ -59,7 +59,7 @@
                                                 <span style="color: white"><i class="fa fa-edit"></i>&nbsp;&nbsp;Edit</span>
                                             </a>
                                             |
-                                            <a href="#" @click="deleteUser(fleet.id)" class="text-secondary btn btn-sm btn-danger" id="" data-toggle="tooltip" title="Manage member">
+                                            <a href="#" @click="deleteFleet(fleet.id)" class="text-secondary btn btn-sm btn-danger" id="" data-toggle="tooltip" title="Manage member">
                                                 <span style="color: white"><i class="fa fa-trash"></i>&nbsp;&nbsp;Delete</span>
                                             </a>
 
@@ -266,6 +266,7 @@ export default {
         },
         hideModal() {
             this.$refs['my-modal'].hide()
+            this.$refs['edit-modal'].hide()
         },
         editModalWindow(fleet) {
             // this.form.clear();
@@ -289,6 +290,42 @@ export default {
                     toastr.error(error.response.data.data, 'Error')
                 });
         },
+        deleteFleet(id) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+
+                if (result.value) {
+                    //Send Request to server
+                    axios.delete(`/api/fleet/${id}`)
+
+                        .then((response)=> {
+                            Swal.fire(
+                                'Deleted!',
+                                'User deleted successfully',
+                                'success'
+                            )
+                            // toastr.success('Fleet Saved Successful', 'Success');
+                            this.$store.dispatch('theFleets/getFleets');
+
+                        }).catch(() => {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Something went wrong!',
+                            footer: '<a href>Why do I have this issue?</a>'
+                        })
+                    })
+                }
+
+            })
+        }
     }
 }
 </script>
