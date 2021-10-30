@@ -37,20 +37,6 @@ export default {
     methods: {
         login() {
             this.$store.dispatch('currentUser/loginUser', this.user)
-            /*const data = {
-                email: this.user.email,
-                password: this.user.password
-            };
-            axios.post('http://bursary_v2.io/api/v1/login', data).then(response => {
-                console.log(response.data.data.token);
-                // this.$root.$emit("login", true);
-                localStorage.setItem("auth", true);
-                localStorage.setItem("user", response.data.data.info);
-                localStorage.setItem("token", response.data.data.token);
-                this.$router.push({name:"home"})
-            }).catch((error) =>{
-                this.error=true;
-            }); // credentials didn't match*/
         }
     }
 }

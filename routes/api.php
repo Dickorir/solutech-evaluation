@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\DepotController;
 use App\Http\Controllers\FleetController;
@@ -27,16 +28,20 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::group(['middleware' => ['cors', 'json.response']], function () {
-    Route::get('vehicles', [VehicleController::class,'index']);
-    Route::get('deliveries', [DeliveryController::class,'index']);
-    Route::get('depots', [DepotController::class,'index']);
-    Route::get('orders', [OrderController::class,'index']);
-    Route::get('stage', [StageController::class,'index']);
-    Route::get('vehicle-stages', [VehicleStagesController::class,'index']);
-    Route::get('order-deliveries', [OrderDeliveryController::class,'index']);
+    Route::post('login', [AuthController::class ,'login']);
 
-    Route::get('fleet', [FleetController::class,'index']);
-    Route::post('fleet', [FleetController::class,'store']);
-    Route::get('fleet/{id}', [FleetController::class,'show']);
-    Route::delete('fleet/{id}', [FleetController::class,'destroy']);
+    Route::group(['middleware' => ['auth:api']], function () {
+        Route::get('vehicles', [VehicleController::class, 'index']);
+        Route::get('deliveries', [DeliveryController::class, 'index']);
+        Route::get('depots', [DepotController::class, 'index']);
+        Route::get('orders', [OrderController::class, 'index']);
+        Route::get('stage', [StageController::class, 'index']);
+        Route::get('vehicle-stages', [VehicleStagesController::class, 'index']);
+        Route::get('order-deliveries', [OrderDeliveryController::class, 'index']);
+
+        Route::get('fleet', [FleetController::class, 'index']);
+        Route::post('fleet', [FleetController::class, 'store']);
+        Route::get('fleet/{id}', [FleetController::class, 'show']);
+        Route::delete('fleet/{id}', [FleetController::class, 'destroy']);
+    });
 });
