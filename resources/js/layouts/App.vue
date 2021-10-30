@@ -18,6 +18,9 @@ import Header from '../components/Header.vue'
 import Nav from '../components/Navigation.vue'
 import Footer from '../components/Footer.vue'
 export default {
+    data: () => ({
+        auth: false,
+    }),
     components: {
         Header,
         Nav,
@@ -28,7 +31,7 @@ export default {
     },
     created() {
         axios.defaults.headers.common["Authorization"] = "Bearer " + localStorage.getItem("token");
-
+        this.auth = true;
         // this.$store.dispatch('cu')
     }
 }
