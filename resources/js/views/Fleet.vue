@@ -211,12 +211,15 @@ export default {
             this.$refs['my-modal'].hide()
         },
         editModalWindow(fleet) {
-            console.log(this.form);
+            console.log(fleet);
             // this.form.clear();
             this.editMode = true
             // this.form.reset();
             this.$refs['my-modal'].show();
-            this.form.fill(fleet);
+            this.form.order_id = fleet.order_id;
+            this.form.delivery_id = fleet.delivery_id;
+            console.log(fleet.order_id);
+
         },
         saveFleet(){
             axios.post('/api/fleet', this.form)

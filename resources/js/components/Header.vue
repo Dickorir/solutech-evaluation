@@ -71,8 +71,7 @@
                                     <h5 class="mb-0">asasas</h5>
                                 </div>
                                 <div class="list-group list-group-flush">
-                                    <a href="#" class="list-group-item"><i class="fa fa-user"></i> Profile</a>
-                                    <a href="#" class="list-group-item"><i class="fa fa-sign-out"></i> Sign Out!</a>
+                                    <a href="#" @click.prevent="logout()" class="list-group-item"><i class="fa fa-sign-out"></i> Sign Out!</a>
                                 </div>
                             </div>
                         </li>
@@ -90,3 +89,17 @@
         </div>
     </div>
 </template>
+<script>
+import axios from 'axios'
+export default {
+    name: "Logout",
+    methods: {
+        logout() {
+            axios.post('api/logout')
+                .catch(error => {
+                    window.location.href = '/';
+                });
+        }
+    }
+}
+</script>
