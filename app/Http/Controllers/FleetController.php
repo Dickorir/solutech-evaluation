@@ -88,7 +88,11 @@ class FleetController extends BaseController
      */
     public function show($id)
     {
-        //
+        $data = Order::whereHas('vehicle_stage', function ($query) use ($id) {
+            $query->where('id', $id);
+        })->first();
+
+        return $this->sendResponse(VehicleStagesCollection::make($data), 'Orders Delivery');
     }
 
     /**

@@ -54,10 +54,15 @@
                                         <td class="text-capitalize">{{ fleet.vehicle_status }}</td>
                                         <td class="text-capitalize">{{ fleet.order_status }}</td>
                                         <td>
-                                            <a href="" class="text-secondary btn btn-sm btn-info" id="" data-toggle="tooltip" title="Manage member">
-                                                <span style="color: white"><i class="fa fa-tasks"></i>&nbsp;&nbsp;Assign</span>
+
+                                            <a href="#" data-id="fleet.id" @click="editModalWindow(fleet)" class="text-secondary btn btn-sm btn-info" data-toggle="tooltip" title="Manage member">
+                                                <span style="color: white"><i class="fa fa-edit"></i>&nbsp;&nbsp;Edit</span>
                                             </a>
-                                            <button class="btn btn-success">Add New <i class="fas fa-user-plus fa-fw"></i></button>
+                                            |
+                                            <a href="#" @click="deleteUser(fleet.id)" class="text-secondary btn btn-sm btn-danger" id="" data-toggle="tooltip" title="Manage member">
+                                                <span style="color: white"><i class="fa fa-trash"></i>&nbsp;&nbsp;Delete</span>
+                                            </a>
+
                                         </td>
                                     </tr>
                                     </tbody>
@@ -116,6 +121,63 @@
                                     </div>
                                     <button type="submit" id="submit" name="submit"
                                             class="btn btn-primary btn-block"><span id="create">Submit</span>
+                                    </button>
+
+                                </form>
+
+                            </div>
+                            <b-button class="mt-3" variant="outline-danger" block @click="hideModal">Close Me</b-button>
+                        </b-modal>
+
+                        <b-modal ref="edit-modal" hide-footer title="Edit Fleet">
+                            <div class="d-block">
+
+                                <form v-on:submit.prevent="saveFleet">
+                                    <div class="form-row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="">Order</label>
+                                            <select class="form-control" v-model="form.order_id" >
+                                                <option value="admin">Admin</option>
+                                                <option v-for="item in getOrders" :value="item.id" :key="item.id">
+                                                    {{ item.order }}
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="">Order Status</label>
+                                            <select class="form-control" v-model="form.delivery_id" >
+                                                <option v-for="item in getDeliveries" :value="item.id" :key="item.id">
+                                                    {{ item.name }}
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="">Vehicle</label>
+                                            <select class="form-control" v-model="form.vehicle_id" >
+                                                <option v-for="item in getVehicles" :value="item.id" :key="item.id">
+                                                    {{ item.number_plate }}
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="">Vehicle Status</label>
+                                            <select class="form-control" v-model="form.stage_id" >
+                                                <option v-for="item in getStages" :value="item.id" :key="item.id">
+                                                    {{ item.name }}
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="">Destination Depot</label>
+                                            <select class="form-control" v-model="form.depot_id" >
+                                                <option v-for="item in getDepots" :value="item.id" :key="item.id">
+                                                    {{ item.name }}
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <button type="submit" id="submit" name="submit"
+                                            class="btn btn-primary btn-block"><span id="update">update</span>
                                     </button>
 
                                 </form>
@@ -205,13 +267,21 @@ export default {
         hideModal() {
             this.$refs['my-modal'].hide()
         },
+        editModalWindow(fleet) {
+            // this.form.clear();
+            // this.editMode = true
+            // this.form.reset();
+            this.$refs['edit-modal'].show();
+            this.form.fill(fleet)
+        },
         saveFleet(){
             axios.post('/api/fleet', this.form)
                 .then(response => {
                     // console.log(response.data.success)
                     if (response.data.success === true) {
                         this.$refs['my-modal'].hide();
-                        toastr.success('Fleet Saved Successful', 'Success')
+                        toastr.success('Fleet Saved Successful', 'Success');
+                        this.$store.dispatch('theFleets/getFleets');
                     }
                 })
                 .catch(error => {
