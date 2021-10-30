@@ -78,37 +78,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -264,28 +233,6 @@ var render = function () {
                             _c("td", { staticClass: "text-capitalize" }, [
                               _vm._v(_vm._s(order.order_status)),
                             ]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _vm._m(2, true),
-                              _vm._v(" "),
-                              _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-success",
-                                  attrs: {
-                                    "data-toggle": "modal",
-                                    "data-target": "#addNew",
-                                  },
-                                  on: { click: _vm.openModalWindow },
-                                },
-                                [
-                                  _vm._v("Add New "),
-                                  _c("i", {
-                                    staticClass: "fas fa-user-plus fa-fw",
-                                  }),
-                                ]
-                              ),
-                            ]),
                           ])
                         }),
                         0
@@ -297,8 +244,6 @@ var render = function () {
                 ]
               ),
             ]),
-            _vm._v(" "),
-            _vm._m(3),
           ]),
         ]),
       ]),
@@ -325,7 +270,7 @@ var staticRenderFns = [
                   staticClass: "breadcrumb-item active",
                   attrs: { "aria-current": "page" },
                 },
-                [_vm._v("orders")]
+                [_vm._v("Orders")]
               ),
             ]),
           ]),
@@ -334,7 +279,7 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("div", { staticClass: "col-md-4" }, [
         _c("div", { staticClass: "text-center" }, [
-          _c("p", { staticClass: "font-weight-bold" }, [_vm._v("orders")]),
+          _c("p", { staticClass: "font-weight-bold" }, [_vm._v("Orders")]),
         ]),
       ]),
     ])
@@ -353,103 +298,9 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Vehicle")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Delivery")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("More")]),
+        _c("th", [_vm._v("Order Status")]),
       ]),
     ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "text-secondary btn btn-sm btn-info",
-        attrs: {
-          href: "",
-          id: "",
-          "data-toggle": "tooltip",
-          title: "Manage member",
-        },
-      },
-      [
-        _c("span", { staticStyle: { color: "white" } }, [
-          _c("i", { staticClass: "fa fa-tasks" }),
-          _vm._v("  Assign"),
-        ]),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "modal fade",
-        attrs: {
-          id: "addNew",
-          tabindex: "-1",
-          role: "dialog",
-          "aria-labelledby": "addNewLabel",
-          "aria-hidden": "true",
-        },
-      },
-      [
-        _c(
-          "div",
-          {
-            staticClass: "modal-dialog modal-dialog-centered",
-            attrs: { role: "document" },
-          },
-          [
-            _c("div", { staticClass: "modal-content" }, [
-              _c("div", { staticClass: "modal-header" }, [
-                _c(
-                  "h5",
-                  { staticClass: "modal-title", attrs: { id: "addNewLabel" } },
-                  [_vm._v("Add New User")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "close",
-                    attrs: {
-                      type: "button",
-                      "data-dismiss": "modal",
-                      "aria-label": "Close",
-                    },
-                  },
-                  [
-                    _c("span", { attrs: { "aria-hidden": "true" } }, [
-                      _vm._v("×"),
-                    ]),
-                  ]
-                ),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-body view-body" }, [
-                _c("div", { staticClass: "row", attrs: { id: "info" } }, [
-                  _c("div", { staticClass: "col-md-12" }, [
-                    _c("div", { staticClass: "card" }, [
-                      _c("div", { staticClass: "card-body" }, [
-                        _vm._v(
-                          "\n                                                    Nomare\n                                                "
-                        ),
-                      ]),
-                    ]),
-                  ]),
-                ]),
-              ]),
-            ]),
-          ]
-        ),
-      ]
-    )
   },
 ]
 render._withStripped = true

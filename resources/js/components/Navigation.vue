@@ -19,63 +19,19 @@
                     </router-link>
                 </li>
                 <li>
-                    <router-link to="#" class="">
+                    <router-link to="/vehicles" class="">
                             <span class="nav-link-icon">
-                                <i class="fa fa-credit-card"></i>
+                                <i class="fa fa-car"></i>
                             </span>
-                        <span>Payments</span>
-                    </router-link>
-                    <ul>
-                        <li>
-                            <router-link to="" class="">Payouts</router-link>
-                        </li>
-                        <li>
-                            <router-link to="" class="">Defaulters</router-link>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <router-link to="#" class="">
-                            <span class="nav-link-icon">
-                                <user-check-icon size="1.5x" className="custom-class"></user-check-icon>
-                            </span>
-                        <span>Users</span>
-                    </router-link>
-                    <ul>
-                        <li>
-                            <router-link  to="">Users</router-link>
-                        </li>
-                        <li>
-                            <router-link  to="">Consumers</router-link>
-                        </li>
-                        <li>
-                            <router-link  to="">Citizens</router-link>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <router-link to="#" class="">
-                            <span class="nav-link-icon">
-                                <briefcase-icon size="1.5x" className="custom-class"></briefcase-icon>
-                            </span>
-                        <span>Company</span>
+                        <span>Vehicles</span>
                     </router-link>
                 </li>
                 <li>
-                    <router-link to="#" class="">
+                    <router-link to="/depots" class="">
                             <span class="nav-link-icon">
-                                <i class="fa fa-envelope"></i>
+                                <i class="fa fa-building"></i>
                             </span>
-                        <span>SMS</span>
-                    </router-link>
-                </li>
-                <li>
-                    <router-link to="" class="">
-                            <span class="nav-link-icon">
-                                <i data-feather="layers"></i>
-                                    <activity-icon size="1.5x" className="custom-class"></activity-icon>
-                            </span>
-                        <span>Reports</span>
+                        <span>Depots</span>
                     </router-link>
                 </li>
             </ul>

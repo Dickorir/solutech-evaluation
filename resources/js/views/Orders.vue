@@ -8,14 +8,14 @@
                             <li class="breadcrumb-item">
                                 <a href="#">Home</a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">orders</li>
+                            <li class="breadcrumb-item active" aria-current="page">Orders</li>
                         </ol>
                     </nav>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="text-center">
-                    <p class="font-weight-bold">orders</p>
+                    <p class="font-weight-bold">Orders</p>
                 </div>
             </div>
         </div>
@@ -36,8 +36,7 @@
                                         <th>Order</th>
                                         <th>Depot</th>
                                         <th>Vehicle</th>
-                                        <th>Delivery</th>
-                                        <th>More</th>
+                                        <th>Order Status</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -47,12 +46,7 @@
                                         <td class="text-capitalize">{{ order.depot }}</td>
                                         <td class="text-capitalize">{{ order.vehicle }}</td>
                                         <td class="text-capitalize">{{ order.order_status }}</td>
-                                        <td>
-                                            <a href="" class="text-secondary btn btn-sm btn-info" id="" data-toggle="tooltip" title="Manage member">
-                                                <span style="color: white"><i class="fa fa-tasks"></i>&nbsp;&nbsp;Assign</span>
-                                            </a>
-                                            <button class="btn btn-success" data-toggle="modal" data-target="#addNew" @click="openModalWindow">Add New <i class="fas fa-user-plus fa-fw"></i></button>
-                                        </td>
+
                                     </tr>
                                     </tbody>
                                     <tfoot>
@@ -62,31 +56,6 @@
                         </div>
 
 
-                        <div class="modal fade" id="addNew" tabindex="-1" role="dialog" aria-labelledby="addNewLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-
-                                        <h5 class="modal-title" id="addNewLabel">Add New User</h5>
-
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">×</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body view-body">
-                                        <div class="row" id="info">
-                                            <div class="col-md-12">
-                                                <div class="card">
-                                                    <div class="card-body">
-                                                        Nomare
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
